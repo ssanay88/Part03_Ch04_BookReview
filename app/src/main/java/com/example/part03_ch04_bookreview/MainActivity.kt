@@ -9,3 +9,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
+
+
+/*
+
+RecyclerView 사용하기
+View Binding 사용하기
+Retrofit 사용하기 ( API 호출 )
+Glide 사용하기 ( 이미지 로딩 )
+Android Room 사용하기
+Open API 사용하기기
+
+ */
