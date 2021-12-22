@@ -5,11 +5,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.example.part03_ch04_bookreview.adapter.BookAdapter
+import com.example.part03_ch04_bookreview.adapter.HistoryAdapter
 import com.example.part03_ch04_bookreview.api.BookService
 import com.example.part03_ch04_bookreview.databinding.ActivityMainBinding
 import com.example.part03_ch04_bookreview.model.BestSellerDto
+import com.example.part03_ch04_bookreview.model.History
 import com.example.part03_ch04_bookreview.model.SearchBookDto
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,7 +25,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityMainBinding
     private lateinit var adpater:BookAdapter
+    private lateinit var historyAdapter: HistoryAdapter
     private lateinit var bookService: BookService
+
+    private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +36,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initBookRecyclerView()
+
+        db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            "BookSearchDB"
+        ).build()
 
         // retrofit 구현체
         val retrofit = Retrofit.Builder()
@@ -95,6 +108,10 @@ class MainActivity : AppCompatActivity() {
                     call: Call<SearchBookDto>,
                     response: Response<SearchBookDto>
                 ) {
+
+                    // 검색하여 API 요청 성공 시 키워트에 대한 검색 기록 저장 함수수
+                   saveSearchKeyword(keyword)
+
                     if (response.isSuccessful.not()) {
                         // 응답이 실패했을 경우
                         Log.e(TAG,"NOT SUCCESS")
@@ -122,12 +139,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     // recyclerView 관련 선언들
-    fun initBookRecyclerView() {
+    private fun initBookRecyclerView() {
         adpater = BookAdapter()
 
         binding.bookRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.bookRecyclerView.adapter = adpater
     }
+
+    // 검색 기록 창 보여주는 함수
+    private fun showHistoryView() {
+        Thread {
+            val keywords = db.historyDao().getAll().reversed()
+        }
+        binding.historyRecyclerView.isVisible = true
+    }
+
+    // 검색 기록 창 숨겨주는 함수수
+    private fun hideHistoryView() {
+        binding.historyRecyclerView.isVisible = false
+    }
+
+    // 책을 검색 시 해당 keyword를 검색 기록에 저장하는 함수
+    private fun saveSearchKeyword(keyword: String) {
+        Thread {
+            db.historyDao().insertHistory(History(null,keyword))
+        }.start()
+    }
+
 
     companion object {
         private const val TAG = "MainActivity"
