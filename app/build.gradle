@@ -1,7 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'kotlin-kapt'    // Room DB 사용을 위한 추가
+    id 'kotlin-parcelize'    // 데이터 모델 직렬화 사용을 위한 추가
 }
 
 android {

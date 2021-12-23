@@ -10,7 +10,7 @@ import com.example.part03_ch04_bookreview.databinding.ItemBookBinding
 import com.example.part03_ch04_bookreview.model.Book
 
 
-class BookAdapter: ListAdapter<Book, BookAdapter.BookItemViewHolder>(diffUtil) {
+class BookAdapter(val itemClickedListener: (Book) -> Unit): ListAdapter<Book, BookAdapter.BookItemViewHolder>(diffUtil) {
 
     // 뷰 홀더를 생성할 때
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookItemViewHolder {
@@ -27,6 +27,10 @@ class BookAdapter: ListAdapter<Book, BookAdapter.BookItemViewHolder>(diffUtil) {
         fun bind(bookModel: Book) {
             binding.titleTextView.text = bookModel.title
             binding.descroptionTextView.text = bookModel.description
+
+            binding.root.setOnClickListener {
+                itemClickedListener(bookModel)
+            }
 
             // 서버에서 URL을 가지고 와서 coverImageView에 넣어준다.
             Glide

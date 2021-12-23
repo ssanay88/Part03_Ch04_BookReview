@@ -27,6 +27,9 @@ class HistoryAdapter(val historyDeleteClickedListener: (String) -> Unit): ListAd
 
         fun bind(historyModel: History) {
             binding.historyTextView.text = historyModel.keyword
+            binding.historyDeleteBtn.setOnClickListener {
+                historyDeleteClickedListener(historyModel.keyword.orEmpty())
+            }
 
         }
 
