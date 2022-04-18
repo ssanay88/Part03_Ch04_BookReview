@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/82103/AndroidStudioProjcect/Part03_Ch04_BookReview/app/src/main/res/layout/activity_detail.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/82103/AndroidStudioProjcect/Part03_Ch04_BookReview/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/82103/AndroidStudioProjcect/Part03_Ch04_BookReview/app/src/main/res/layout/item_book.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/82103/AndroidStudioProjcect/Part03_Ch04_BookReview/app/src/main/res/layout/item_history.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ppllo/AndroidStudioProjects/Part03_Ch04_BookReview/app/src/main/res/drawable/background_gray_stroke_raidus_8.xml" value="0.290625" />
         <entry key="..\:/Users/ppllo/AndroidStudioProjects/Part03_Ch04_BookReview/app/src/main/res/layout/activity_detail.xml" value="0.2078125" />
         <entry key="..\:/Users/ppllo/AndroidStudioProjects/Part03_Ch04_BookReview/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />

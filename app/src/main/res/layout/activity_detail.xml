@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- 책에 대한 상세한 설명을 담을 스크롤 뷰 -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -16,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- 책의 제목을 나타낼 텍스트뷰 -->
             <TextView
                 android:id="@+id/titleTextView"
                 android:layout_width="0dp"
@@ -28,15 +30,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- 책 커버 이미지를 넣을 이미지뷰-->
             <ImageView
                 android:id="@+id/coverImageView"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
+            <!-- 책 설명을 넣을 텍스트뷰 -->
             <TextView
                 android:id="@+id/descriptionTextView"
                 android:layout_width="0dp"
@@ -48,6 +53,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/coverImageView" />
 
+            <!-- 책에 대한 리뷰를 적을 EditText공간  -->
             <EditText
                 android:id="@+id/reviewEditText"
                 android:layout_width="0dp"

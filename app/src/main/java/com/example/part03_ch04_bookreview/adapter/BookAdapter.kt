@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.part03_ch04_bookreview.databinding.ItemBookBinding
 import com.example.part03_ch04_bookreview.model.Book
 
-
+// 리사이클러뷰 어댑터 클래스 생성, 함수를 인자로 받아와서 사용할 수 있다. ListAdapter(Book 데이터 클래스와 BookAdapter의 뷰홀더를 가진) 상속
 class BookAdapter(val itemClickedListener: (Book) -> Unit): ListAdapter<Book, BookAdapter.BookItemViewHolder>(diffUtil) {
 
     // 뷰 홀더를 생성할 때
@@ -19,17 +19,19 @@ class BookAdapter(val itemClickedListener: (Book) -> Unit): ListAdapter<Book, Bo
 
     // 뷰가 뷰 홀더에 그려질 때
     override fun onBindViewHolder(holder: BookItemViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        holder.bind(currentList[position])    // 가지고 있는 리스트의 현재 포지션에 해당하는 데이터들을 뷰홀더에 적용시킨다.
     }
 
+    // 이너 클래스로 뷰홀더 구현
     inner class BookItemViewHolder(private val binding: ItemBookBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(bookModel: Book) {
             binding.titleTextView.text = bookModel.title
             binding.descroptionTextView.text = bookModel.description
 
+            // 아이템 자체를 클릭할 경우
             binding.root.setOnClickListener {
-                itemClickedListener(bookModel)
+                itemClickedListener(bookModel)    // 인자로 받아온 함수는 MainActivity에서 구현
             }
 
             // 서버에서 URL을 가지고 와서 coverImageView에 넣어준다.

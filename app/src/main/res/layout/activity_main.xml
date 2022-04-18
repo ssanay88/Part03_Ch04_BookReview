@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- 검색하기 위한 EditText -->
     <EditText
         android:id="@+id/searchEditText"
         android:layout_width="0dp"
@@ -26,6 +27,7 @@
         app:layout_constraintTop_toBottomOf="@id/searchEditText"
         tools:listitem="@layout/item_book" />
 
+    <!-- 검색 EditText 클릭 시 검색 기록을 보여줄 리사이클러뷰  -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/historyRecyclerView"
         android:layout_width="0dp"
