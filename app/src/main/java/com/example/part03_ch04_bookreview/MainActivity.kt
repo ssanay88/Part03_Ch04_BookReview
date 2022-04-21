@@ -44,13 +44,13 @@ class MainActivity : AppCompatActivity() {
 
         // retrofit 구현체
         val retrofit = Retrofit.Builder()
-            .baseUrl("인터파크 Open API 기본 URL 입력")
-            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("인터파크 Open API 기본 URL 입력")    // 기본 URL 설정
+            .addConverterFactory(GsonConverterFactory.create())    // 역직렬화를 위한 컨버터 설정
             .build()
 
 
         // interface인 BookService를 retrofit을 이용하여 구현
-        bookService = retrofit.create(BookService::class.java)
+        bookService = retrofit.create(BookService::class.java)    // API통신을 통해 JSON파일들을 받아오는 함수를 가지는 인터페이스
 
         // 생성한 인터페이스에서 함수를 통해 원하는 데이터를 불러와서 사용
         bookService.getBestSellerBooks("인터파크에서 발급받은 API키")
@@ -153,7 +153,7 @@ class MainActivity : AppCompatActivity() {
     private fun initHistoryRecyclerView() {
         // 검색 기록 리사이클러뷰에 사용할 어댑터 선언,
         historyAdapter = HistoryAdapter(historyDeleteClickedListener = {
-            deleteSearchKeyword(it)
+            deleteSearchKeyword(it)    // 람다식 인자를 설정
         })
 
         binding.historyRecyclerView.layoutManager = LinearLayoutManager(this)    // 리사이클러뷰 레이아웃 매니저 연결

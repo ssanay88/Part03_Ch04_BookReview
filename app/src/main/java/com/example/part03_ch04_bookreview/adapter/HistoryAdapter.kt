@@ -11,6 +11,7 @@ import com.example.part03_ch04_bookreview.databinding.ItemHistoryBinding
 import com.example.part03_ch04_bookreview.model.Book
 import com.example.part03_ch04_bookreview.model.History
 
+// ListAdapter를 상속받는 어댑터 클래스, 기록 삭제 버튼을 클릭 시 호출할 리스너를 람다식으로 매개변수로 설정
 class HistoryAdapter(val historyDeleteClickedListener: (String) -> Unit): ListAdapter<History , HistoryAdapter.HistoryItemViewHolder>(diffUtil) {
 
     // 뷰 홀더를 생성할 때
